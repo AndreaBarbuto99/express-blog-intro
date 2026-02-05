@@ -3,16 +3,19 @@ const app = express();
 const port = 3000;
 
 
-// 
-// 
-// 
 
 
 
 app.use(express.static("public"));
+app.use(express.static("MyFiles"))
+
+const absolutePath = __dirname + "/index.html";
+
 
 app.get("/", (req, res) => {
-    res.send("<h1> Server del mio blog </h1>")
+    res.sendFile(absolutePath)
+
+
 });
 
 app.get("/bacheca", (req, res) => {
@@ -50,7 +53,9 @@ app.get("/bacheca", (req, res) => {
         }
     ];
     res.json(bacheca);
+
 })
+
 
 
 
